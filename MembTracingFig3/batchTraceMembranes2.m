@@ -1,8 +1,8 @@
 %This is the main function for processing of exported (.asc) lifetime data
 %from SPCImage. Written by Julia Lazzari-Dean, August 2018. Dependencies
-%are the following matlab functions: calculateStats.m, traceMembranes.m,
+%are the following matlab functions: calculateStats.m, traceMembranes3.m,
 %struct2PandasCSV.m, findCenters.m matchAndCategorize.m, maskImage_otsu.m,
-%findROIsToMerge.m.
+%findROIsToMerge.m, ccToMask.m
 
 %Overall, this function finds cells in photon count
 %images using Otsu's method of thresholding. It then identifies isolated
@@ -62,7 +62,7 @@ function [] = batchTraceMembranes2(smallestObject,metadata,outputFolderName,outp
 
 %prompt the user for the relevant directory and go to that directory
 matlab_dir = pwd;
-directory = uigetdir('C:\Users\JLD\PhD\DeckardData','Please select folder containing .asc photon and tm files.');
+directory = uigetdir(matlab_dir,'Please select folder containing .asc photon and tm files.');
 try
     cd(directory);
 catch
